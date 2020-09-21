@@ -45,6 +45,7 @@ The integration steps, with linked code-level documentation are:
         * to provide his credentials (itsme® code or fingerprint or FaceID)
 
     It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event
+
     3. Collect the Authorization Code and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated,
     4. Exchange the Authorization Code for an ID Token (e.g. identifying the User) and an Access Token.
     5. Request the additional User information from the itsme® userInfo Endpoint by presenting the Access Token obtained in the previous step.
