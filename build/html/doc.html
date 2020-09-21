@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Introduction &#8212; sphinxTest 0.1 documentation</title>
+    <title>1. Integration Sequence &#8212; sphinxTest 0.1 documentation</title>
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
@@ -29,7 +29,7 @@
           <a href="index.html" title="Welcome to sphinxTest’s documentation!"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">sphinxTest 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">1. Introduction</a></li> 
+        <li class="nav-item nav-item-this"><a href="">1. Integration Sequence</a></li> 
       </ul>
     </div>  
 
@@ -40,8 +40,8 @@
             
   <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="integration-sequence">
+<h1>1. Integration Sequence<a class="headerlink" href="#integration-sequence" title="Permalink to this headline">¶</a></h1>
 <p>itsme® is a trusted identity provider allowing partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.</p>
 <p>The objective of this document is to provide all the information needed to integrate the <strong>Authentication</strong> service using the <a class="reference external" href="http://openid.net/specs/openid-connect-core-1_0.html/">OpenID Connect Core 1.0 specifications</a>.</p>
 <div class="content-tabs docutils container">
@@ -55,19 +55,31 @@
 </div>
 </div>
 </div>
-<div class="section" id="prerequisite">
-<h1>2. Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">¶</a></h1>
-<p>Before you start integrating itsme®, you MUST create an organisation on the following url: <a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform">https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform</a>.</p>
-<p>Once there, you will need to fill out a basic form with the following questions:</p>
+<div class="section" id="id1">
+<h1>Integration Sequence<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>itsme® integration is based on the Authorization Code Flow of OpenID Connect 1.0. The Authorization Code Flow goes through the steps as defined in OpenID Connect Core Authorization Code Flow Steps, depicted in the following diagram:</p>
+<a class="reference internal image-reference" href="https://belgianmobileid.github.io/slate/OpenID_Login_SeqDiag.png"><img alt="Sequence diagram" src="https://belgianmobileid.github.io/slate/OpenID_Login_SeqDiag.png" style="width: 400px;" /></a>
+<p>The integration steps, with linked code-level documentation are:</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Contact details such as your email, name, phone number.</p></li>
-<li><p>Organisation details as shown on the company register for your jurisdiction.</p></li>
-<li><p>Information about the project you want to set-up and the use case you have in mind.</p></li>
-<li><p>itsme® terms and conditions. If you require a copy of this please contact <a class="reference external" href="mailto:onboarding&#37;&#52;&#48;itsme&#46;be">onboarding<span>&#64;</span>itsme<span>&#46;</span>be</a>.</p></li>
+<div><ol class="arabic simple">
+<li><p>Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme®: itsme® button specifications.</p></li>
+<li><dl class="simple">
+<dt>Create the Authorization Request to authenticate the User. This request will redirect the User to the itsme® Front-End. itsme® then authenticates the User by asking him</dt><dd><ul class="simple">
+<li><p>to enter his phone number on the itsme® OpenID web page</p></li>
+<li><p>authorize the release of some information to your application</p></li>
+<li><p>to provide his credentials (itsme® code or fingerprint or FaceID)</p></li>
 </ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p>It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event
+3. Collect the Authorization Code and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated,
+4. Exchange the Authorization Code for an ID Token (e.g. identifying the User) and an Access Token.
+5. Request the additional User information from the itsme® userInfo Endpoint by presenting the Access Token obtained in the previous step.
+6. Confirm the success of the operation and display a success message.</p>
 </div></blockquote>
-<p>Our onboarding team will review your project and get in touch within 3 days with a “client_id” and a “service_code” which need to be added in your configuration. Meanwhile, this should not prevent you from starting your integration.</p>
+<p>If a user doesn’t have the itsme® app, they’ll be redirected to a mobile website with more information and download links.</p>
 </div>
 <div class="section" id="integration-guide">
 <h1>3. Integration guide<a class="headerlink" href="#integration-guide" title="Permalink to this headline">¶</a></h1>
@@ -89,8 +101,8 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1. Introduction</a></li>
-<li><a class="reference internal" href="#prerequisite">2. Prerequisite</a></li>
+<li><a class="reference internal" href="#">1. Integration Sequence</a></li>
+<li><a class="reference internal" href="#id1">Integration Sequence</a></li>
 <li><a class="reference internal" href="#integration-guide">3. Integration guide</a></li>
 </ul>
 
@@ -128,7 +140,7 @@
           <a href="index.html" title="Welcome to sphinxTest’s documentation!"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">sphinxTest 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">1. Introduction</a></li> 
+        <li class="nav-item nav-item-this"><a href="">1. Integration Sequence</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
