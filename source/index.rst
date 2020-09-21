@@ -7,10 +7,13 @@ Welcome to sphinxTest's documentation!
 ======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
    
-   doc
+   login
+   sharedata
+   confirm
+   
 
 
 

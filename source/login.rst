@@ -7,8 +7,11 @@
    :maxdepth: 2
    :caption: Contents:
 
+Login 
+***********************
 
-1. Integration Sequence
+
+1. Getting Started
 =======================
 itsme® is a trusted identity provider allowing partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
 
@@ -26,13 +29,13 @@ The objective of this document is to provide all the information needed to integ
 
         And here we have some specific text for a confirm
 
-Integration Sequence
+2. Integration Guide
 =======================
 
 itsme® integration is based on the Authorization Code Flow of OpenID Connect 1.0. The Authorization Code Flow goes through the steps as defined in OpenID Connect Core Authorization Code Flow Steps, depicted in the following diagram:
 
 .. image:: https://belgianmobileid.github.io/slate/OpenID_Login_SeqDiag.png
-  :width: 400
+  :width: 800
   :alt: Sequence diagram
 
 The integration steps, with linked code-level documentation are:
@@ -45,6 +48,7 @@ The integration steps, with linked code-level documentation are:
         * to provide his credentials (itsme® code or fingerprint or FaceID)
 
     It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event
+
 
     3. Collect the Authorization Code and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated,
     4. Exchange the Authorization Code for an ID Token (e.g. identifying the User) and an Access Token.
